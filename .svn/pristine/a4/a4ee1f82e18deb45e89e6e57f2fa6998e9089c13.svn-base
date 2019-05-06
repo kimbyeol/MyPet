@@ -1,0 +1,137 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<style>
+.month_next, .month_prev{
+	margin: 15px;
+	display: inline-block;
+	width: 32px;
+	line-height: 64px;
+	text-indent: -99999px;
+}
+
+.month_next{
+	background: url("img/cal_right-arrow.png") center no-repeat;
+}
+.month_prev{
+	background: url("img/cal_left-arrow.png") center no-repeat;
+}
+#month_cur{
+	font-size: 40px; 
+}
+#calendar_header{
+	width: 0%;
+	border: 0;
+}
+.week_title{
+	background-color: #6c6a68;
+	font-size: 1.3em;
+	color: #fff;
+	line-height: 32px;
+}
+.week_content{
+	height: 110px;
+	vertical-align: top;
+	
+}
+/* 조건문으로 추가되는 클래스속성
+.day_s_title{
+	background-color: pink;
+}
+.day_number_sun{
+	color: red;
+	
+}
+.day_number_sat{
+	color: blue;
+} 
+*/
+
+</style>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<c:set var="v" scope="page" value="<%=new java.util.Date().getTime() %>"/>  
+<link rel="stylesheet" href="css/default.css"/>
+<script type="text/javascript" 
+		src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div id="calendar">
+<table id="calendar_header">
+	<tr>
+		<td><a class="month_prev">이전달</a></td>
+		<td id="month_cur">${year }.${month+1 }</td>
+		<td><a class="month_next">다음달</a></td>
+	</tr>
+</table>
+<table id="calendar_body" border="1">
+	<thead>
+		<tr class="week_title">
+			<th class="week_sun">일</th>
+			<th class="week_mon">월</th>
+			<th class="week_tue">화</th>
+			<th class="week_wed">수</th>
+			<th class="week_thu">목</th>
+			<th class="week_fri">금</th>
+			<th class="week_sat">토</th>		
+		</tr>
+	</thead>
+	<tbody>
+	<c:forEach begin="1" end="6" >
+		<tr class="week_content">
+			<c:forEach var="i" begin="1" end="7">
+				<td class="cell"></td>
+			</c:forEach>
+		</tr>
+	</c:forEach> 
+	</tbody>
+</table>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	var date = 1;
+	
+	//달력 칸마다 index지정 (0~41)
+	$('.cell').each(function(index, item){ 
+	    $(item).attr('dayindex', index);
+	});
+	
+	//일요일, 토요일 스타일지정
+	for(var i=0;i<=41;i++){
+		if(i%7==0){
+			$('.cell').eq(i).css('color', 'red');
+		}else if(i==6 || i%7==6){
+			$('.cell').eq(i).css('color', 'blue');
+		}
+	}
+	
+	//태그에 날짜값지정, 날짜(date) 출력
+	for(var i=${start-1};i<${endDay+(start-1)};i++){
+		var tag = '<div class="day_number, right">'+ date +'</div>';
+		 $('.cell').eq(i).append(tag).attr('date', ${year } + '-' + (${month+1 }<10? '0'+${month+1 } : ${month+1 }) + '-' + (date<10?'0'+date:date));	
+		date++;						
+	}	
+	//오늘날짜 스타일지정
+	$('.cell[date=${todayDate}]').css('background','pink');
+	
+/* 	//조회해온 일정만 출력
+	for(var i=0;i<${vo.size()};i++){
+		var titletag = '<div class="s_title">${vo.get(i).s_title}</div>';
+		$('.cell[date=${vo.get(i).s_datestring}]').append(titletag);
+	} */
+	
+	
+	//일정태그 스타일지정
+	
+
+});
+	
+
+</script>
+</body>
+</html>

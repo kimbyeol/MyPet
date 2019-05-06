@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="calender.mapper">
+<insert id="insert">
+insert into schedule(s_id,s_date,s_title,s_content,s_name) values(seq_schedule.nextval,#{s_date},#{s_title},#{s_content},#{s_name})
+</insert>
+<select id="list" resultType="calender.dto.CalenderDTO">
+	select * from SCHEDULE where s_name=#{s_name} and s_date=#{s_date}
+</select>
+<update id="update">
+update schedule set s_title=#{s_title},s_content=#{s_content} where s_id=#{s_id}
+</update>
+<delete id="delete">
+delete from schedule where s_id=#{s_id}
+</delete>
+<select id="select" resultType="calender.dto.CalenderDTO">
+select * from schedule where s_id=#{s_id}
+</select>
+<select id="allList" resultType="calender.dto.CalenderDTO">
+select s_date from schedule where s_name=#{s_name} group by s_date 
+</select>
+<select id="select_main" resultType="calender.dto.CalenderDTO">
+select *
+from schedule
+where s_name=#{s_name}
+</select>
+
+
+
+</mapper>

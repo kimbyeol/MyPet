@@ -1,0 +1,131 @@
+package com.hanul.CatHolic;
+
+import java.util.HashMap;
+
+import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
+
+import member.dto.MemberDTO;
+import member.service.MemberService;
+
+@Controller
+public class MemberController {
+
+	@Autowired MemberService service;
+
+
+	//안드로이드부분 m*****;
+	@RequestMapping("/minsert.me")
+	public @ResponseBody String insert(MemberDTO dto, @RequestBody JSONObject dd ){
+		System.out.println(dd.toString());
+		
+		HashMap<String, String> map = new HashMap<String, String>();
+		
+		/*Gson json = new Gson();
+		JsonObject object=new JsonObject((json.toJson(dd)).toString());*/
+		
+		dto.setNickname(dd.get("nickname").toString());
+		dto.setMail(dd.get("mail").toString());
+		dto.setPwd(dd.get("pwd").toString());
+		dto.setUserid(dd.get("userid").toString());
+		dto.setAdmin(dd.get("admin").toString());
+		String aa="";
+		if(service.insert(dto)==true) {
+			map.put("succ", "success");
+			//aa="yes";
+		}else{
+			map.put("succ","fail");
+			//aa="no";
+		}
+		/*String oo="";
+		if(service.insert(dto)==true){
+			oo="success";
+		}else {
+			oo="fail";
+		}
+		HashMap<String, String> os= new HashMap<String, String>();
+		os.put("trueornot",oo);
+		JSONObject son = new JSONObject(os);
+		System.out.println(son.toString());*/
+		/*dto.setUserid(request.getParameter("userid"));
+		dto.setNickname(request.getParameter("nickname"));
+		dto.setPwd(request.getParameter("pwd"));
+		dto.setMail(request.getParameter("mail"));
+		dto.setAdmin(request.getParameter("admin"));*/
+		Gson gson = new Gson();
+		String Va=gson.toJson(map);
+		
+		JSONObject json= new JSONObject(map);
+		System.out.println(map.toString());
+		System.out.println(json.toString());
+		return Va;
+
+	}
+
+	@RequestMapping("/mselect.me" )
+	public @ResponseBody String select(MemberDTO dto,@RequestBody JSONObject dd){
+		/*dto.setUserid(request.getParameter("userid"));
+		dto.setPwd(request.getParameter("pwd"));*/
+		System.out.println(dd.get("userid").toString());
+		dto.setUserid(dd.get("userid").toString());
+		dto.setPwd(dd.get("pwd").toString());
+		MemberDTO vo= new MemberDTO();
+		vo=service.select(dto);
+		System.out.println("으아앙아아나아");
+		Gson gson= new Gson();
+		String Ra=gson.toJson(vo);
+		
+		return Ra;
+	}
+	@ResponseBody
+	@RequestMapping("/mcheck.me")
+	public String check(@RequestParam String userid) {
+		
+		HashMap<String, String> map= new HashMap<String, String>();
+		
+		if(service.check(userid)>0) {
+			map.put("succ", "fail");
+		}else {
+		map.put("succ", "success");
+		}
+		Gson gson = new Gson();
+		String Ca=gson.toJson(map);
+		
+		return Ca;
+	}
+	@RequestMapping("/mselect2.me" )
+	public @ResponseBody String select2(MemberDTO dto,@RequestBody MemberDTO vo){
+		/*dto.setUserid(request.getParameter("userid"));
+		dto.setPwd(request.getParameter("pwd"));*/
+		System.out.println(vo.getPwd().toString());
+		MemberDTO bo= new MemberDTO();
+		bo=service.select(vo);
+		System.out.println(bo.getNickname());
+		Gson gson= new Gson();
+		String Ra=gson.toJson(bo);
+		
+		return Ra;
+	}
+	@ResponseBody
+	@RequestMapping("/mmemlist")
+	public String list_mem() {
+		Gson gson= new Gson();
+		String Ma=gson.toJson(service.list_member());
+		
+		return Ma;
+	}
+
+	
+	//웹부분
+	
+	
+	
+	
+}

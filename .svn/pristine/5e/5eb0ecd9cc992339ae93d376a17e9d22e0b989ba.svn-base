@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="imember.mapper">
+	<insert id="insert">
+	 insert into member(userid,pwd,nickname,mail,admin) values(#{userid},#{pwd},#{nickname},#{mail},#{admin})
+	</insert>
+	<select id="selectone" resultType="member.dto.MemberDTO">
+	select nickname,mail from member where userid=#{userid} and pwd=#{pwd}
+	</select>
+	<select id="check" resultType="Integer">
+	select count(*) from member where userid=#{userid}
+	</select>
+	<select id="list" resultType="member.dto.MemberDTO">
+		select * from member
+	</select>
+	<select id="kakaocheck" resultType="Integer">
+		select count(*) from member where userid=#{userid} and nickname=#{nickname}
+	</select>
+	
+	
+</mapper>

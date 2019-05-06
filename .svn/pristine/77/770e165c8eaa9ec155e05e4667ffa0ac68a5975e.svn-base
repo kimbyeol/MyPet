@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function delete_mem(data){
+	var admin_ch="${login_info.admin}";
+	var user=data;
+	if(admin_ch=='Y'){
+		$.ajax({
+			url:'delete_mem',
+			data:{userid:user},
+			type:'GET',
+			success:function(dat){
+				if(dat=='succ'){
+					alert('삭제에 성공하였습니다');
+				}else{
+					alert('삭제에 실패하였습니다');
+				}
+			},
+			error:function(req){
+				alert(req.status);
+			}
+		});
+	}else{
+		alert('관리자가아닙니다.');
+	}
+}
+</script>
+</head>
+<body>
+<h3>관리자 페이지</h3><br/><br/>
+<table style="border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-right: 1px solid;">
+<tr style="border-bottom: 1px solid; background-color: silver; padding: 5px;"><td>아이디</td><td>닉네임</td><td>이메일</td><td>삭제</td></tr>
+<c:forEach items="${admin}" var="admin">
+<tr style="border-bottom: 1px solid; padding: 5px;"><td>${admin.userid}</td><td>${admin.nickname}</td><td>${admin.mail}</td><td><img src="img/delete.png" onclick="if(confirm('탈퇴시키시겠습니까?'))delete_mem('"+${admin.userid}+"')" /></td><tr>
+</c:forEach>
+</table>
+<br/><br/><br/>
+
+</body>
+</html>

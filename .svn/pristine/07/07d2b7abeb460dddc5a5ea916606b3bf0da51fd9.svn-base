@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="imember.mapper">
+	<insert id="insert">
+	 insert into member(userid,pwd,nickname,mail) values(#{userid},#{pwd},#{nickname},#{mail})
+	</insert>
+	<select id="selectone" resultType="member.dto.MemberDTO">
+	select * from member where userid=#{userid} and pwd=#{pwd}
+	</select>
+	<select id="check" resultType="Integer">
+	select count(*) from member where userid=#{userid}
+	</select>
+	<select id="list" resultType="member.dto.MemberDTO">
+		select * from member
+	</select>
+	<select id="kakaocheck" resultType="Integer">
+		select count(*) from member where userid=#{userid} and nickname=#{nickname}
+	</select>
+	<update id="update">
+	update member set nickname=#{nickname},mail=#{mail},pwd=#{pwd},profilepath=#{profilepath} where userid=#{userid}
+	</update>
+	
+	<select id="login" resultType="member.dto.MemberDTO">
+	 select * from member where  userid=#{userid} and pwd=#{pwd}
+	</select>
+	<select id="check_me" resultType="member.dto.MemberDTO">
+	select * from member where nickname=#{nickname}
+	</select>
+	<select id="check_id" resultType="member.dto.MemberDTO">
+	select * from member where userid=#{userid}
+	</select>
+	<delete id="delete_mem">
+	delete from member where userid=#{userid}
+	</delete>
+	<update id="update_web">
+	update member set nickname=#{nickname},pwd=#{pwd},mail=#{mail} where userid=#{userid}
+	</update>
+</mapper>

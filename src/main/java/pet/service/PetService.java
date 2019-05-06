@@ -1,0 +1,16 @@
+package pet.service;
+
+import java.util.List;
+
+import pet.dto.PetDTO;
+
+
+
+public interface PetService {
+
+	String insert_pet(PetDTO dto);
+	 String update_pet(PetDTO dto);
+	 List<PetDTO> list_pet(String owner);
+	 String delete_pet(int id);
+	 boolean insert_webpet(PetDTO dto);
+}

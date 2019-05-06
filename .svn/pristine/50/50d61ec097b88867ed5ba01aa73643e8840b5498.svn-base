@@ -1,0 +1,56 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page session="false"%>
+<html>
+<head>
+<title>home</title>
+<!-- 	<link rel="stylesheet" href="resources/css/common.css">
+	<link rel="stylesheet" href="resources/css/unit.css"> -->
+<!-- 	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+<script src="resources/js/controller.js"></script>
+</head>
+
+<body>
+	<!-- 슬라이더 뷰 -->
+	<img alt="" src="">
+	<div class="slide" style="margin-top: 8px">
+		<button class="prev" type="button" style="color: #696969;">
+			<img alt="" src="resources/img/left-arrow (1).png" />
+		</button>
+		<ul>
+			<li><img alt="" src="resources/img/cat_1.jpg"></li>
+			<li><img alt="" src="resources/img/cat_2.jpg"></li>
+			<li><img alt="" src="resources/img/cat_3.jpg"></li>
+			<li><img alt="" src="resources/img/cat_4.jpg"></li>
+			<!-- <li><img alt="" src="resources/img/cat_5.jpg"></li> -->
+		</ul>
+		<button class="next" type="button">
+			<img alt="" src="resources/img/right-arrow (1).png" />
+		</button>
+
+	</div>
+	<div class="main_board_slot" style="margin: 0 auto; margin-top: 20px;">
+		<!--  공지사항 게시판 간략히 보기 -->
+		<div
+			style="border: 1px solid #fff; width: 42%; height: 34%; float: left; margin-left: 100px; text-align: left;">
+			<a onclick="location='list.no'" style="font-size: 20px;">공지사항</a>
+			<hr>
+			<li>공지사항 게시판 체크입니다&nbsp;&nbsp;&nbsp; </li><br>
+			<li>공지사항 게시판 체크입니다&nbsp;&nbsp;&nbsp; </li><br>
+			<li>공지사항 게시판 체크입니다&nbsp;&nbsp;&nbsp; </li>
+		</div>
+		<div
+			style="border: 1px solid #fff; width: 42%; height: 34%; float: left; margin-left: 130px; text-align: left;">
+			<a onclick="location='list.bo'"	style="font-size: 20px;">자유게시판</a>
+			<hr>
+			<li>자유게시판 체크입니다&nbsp;&nbsp;&nbsp; </li><br>
+			<li>자유게시판 체크입니다&nbsp;&nbsp;&nbsp; </li><br>
+			<li>자유게시판 체크입니다&nbsp;&nbsp;&nbsp; </li>
+		</div>
+		
+	</div>
+</body>
+</html>

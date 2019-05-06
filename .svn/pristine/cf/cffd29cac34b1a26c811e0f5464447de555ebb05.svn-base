@@ -1,0 +1,57 @@
+package calender.dao;
+
+import java.util.Date;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import calender.dto.CalenderDTO;
+
+@Repository
+public class CalenderDAOImpl implements CalenderDAO {
+@Autowired SqlSession sql;
+
+@Override
+public String s_insert(CalenderDTO dto) {
+	// TODO Auto-generated method stub
+	return sql.insert("calender.mapper.insert",dto)>0?"succ":"fail";
+}
+
+@Override
+public String s_delete(String s_id) {
+	// TODO Auto-generated method stub
+	return sql.delete("calender.mapper.delete",s_id)>0?"succ":"fail";
+}
+
+@Override
+public String s_update(CalenderDTO dto) {
+	// TODO Auto-generated method stub
+	return sql.update("calender.mapper.update",dto)>0?"succ":"fail";
+}
+
+@Override
+public List<CalenderDTO> s_list(CalenderDTO eo) {
+	// TODO Auto-generated method stub
+	return sql.selectList("calender.mapper.list",eo);
+}
+
+@Override
+public CalenderDTO s_modify(String s_id) {
+	// TODO Auto-generated method stub
+	return sql.selectOne("calender.mapper.select",s_id);
+}
+
+@Override
+public List<CalenderDTO> s_list_all(String s_name) {
+	// TODO Auto-generated method stub
+	return sql.selectList("calender.mapper.allList",s_name);
+}
+
+
+
+
+
+
+}

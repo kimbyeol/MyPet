@@ -1,0 +1,97 @@
+package com.hanul.CatHolic;
+
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
+
+import pet.dto.PetDTO;
+import pet.service.PetService;
+
+@Controller
+public class PetController {
+	@Autowired PetService service;
+	
+	@ResponseBody
+	@RequestMapping("/minsert.pet")
+	public String pet_insert(PetDTO dto,@RequestBody HashMap<String, String> map) {
+		dto.setGender(map.get("gender"));
+		Date date=null; 
+		try {
+			date = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(map.get("pet_birth").toString());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dto.setPet_birth(date);
+		dto.setPetname(map.get("petname"));
+		dto.setOwner(map.get("owner"));
+		dto.setSpecies(map.get("species"));
+		System.out.println(map.get("pet_birth").toString());
+		HashMap<String, String> map2 = new HashMap<String, String>();
+		map2.put("succ",service.insert_pet(dto));
+		Gson gson= new Gson();
+		String pet=gson.toJson(map2);
+		return pet;
+	}
+
+	@ResponseBody
+	@RequestMapping("/mupdate.pet")
+	public String pet_update(PetDTO dto ,@RequestBody HashMap<String, String> map) {
+		dto.setGender(map.get("gender"));
+		Date date=null; 
+		try {
+			date = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(map.get("pet_birth").toString());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dto.setPet_birth(date);
+		dto.setPetname(map.get("petname"));
+		dto.setId(Integer.parseInt(map.get("id")));
+		dto.setSpecies(map.get("species"));
+		System.out.println(map.get("pet_birth").toString());
+		
+		String dd=service.update_pet(dto);
+		HashMap<String, String> map2 = new HashMap<String, String>();
+		map2.put("succ",dd);
+	
+		Gson gson= new Gson();
+		String pet=gson.toJson(map2);
+		System.out.println(pet);
+		return pet;
+	}
+
+	@ResponseBody
+	@RequestMapping("/mlist.pet")
+	public String pet_list(@RequestParam String owner) {
+		System.out.println(owner);
+		Gson gson= new Gson();
+		String Li=gson.toJson(service.list_pet(owner));
+		
+		return Li;
+	}
+	@ResponseBody
+	@RequestMapping("/mdelete.pet")
+	public String pet_delete(@RequestParam String id) {
+		System.out.println(id);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("succ",service.delete_pet(Integer.parseInt(id)));
+		Gson gson= new Gson();
+		String pet=gson.toJson(map);
+		
+		return pet;
+	}
+
+}

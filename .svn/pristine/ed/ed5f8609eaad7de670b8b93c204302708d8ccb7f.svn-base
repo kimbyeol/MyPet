@@ -1,0 +1,78 @@
+package board.dto;
+
+import java.sql.Date;
+
+public class BoardDTO {
+	private String title,nickname,content,imagepath,imagename;
+	private int b_class,bo_id,parent_id,likes,cnt;
+	private Date writedate;
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getImagepath() {
+		return imagepath;
+	}
+	public void setImagepath(String imagepath) {
+		this.imagepath = imagepath;
+	}
+	public String getImagename() {
+		return imagename;
+	}
+	public void setImagename(String imagename) {
+		this.imagename = imagename;
+	}
+	public int getB_class() {
+		return b_class;
+	}
+	public void setB_class(int b_class) {
+		this.b_class = b_class;
+	}
+	public int getBo_id() {
+		return bo_id;
+	}
+	public void setBo_id(int bo_id) {
+		this.bo_id = bo_id;
+	}
+	public int getParent_id() {
+		return parent_id;
+	}
+	public void setParent_id(int parent_id) {
+		this.parent_id = parent_id;
+	}
+	public int getLikes() {
+		return likes;
+	}
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	public Date getWritedate() {
+		return writedate;
+	}
+	public void setWritedate(Date writedate) {
+		this.writedate = writedate;
+	}
+	
+	
+
+}

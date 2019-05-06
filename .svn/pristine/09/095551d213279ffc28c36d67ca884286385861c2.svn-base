@@ -1,0 +1,63 @@
+@charset "UTF-8";
+html, body, ul, li, button{
+	margin: 0;
+	padding: 0;
+	font-family: NanumSquareRoundB;
+	
+}
+@font-face{
+	font-family: NanumSquareRoundB;
+	src: url(resources/font/NanumSquareRoundB.woff) format('woff');
+}
+img{
+	display: block;
+	border: 0;
+}
+button {
+	border: 0;
+	background: none;
+}
+
+.btn_fill_mh, .btn-empty_mh {
+	padding: 3px 10px;
+	text-decoration: none;
+	text-align: center;
+	box-shadow: 1.5px 1.5px #0520b7;
+	color: lime;
+}
+.btn-fill_mh:hover{
+	cursor: pointer;
+	color: orange;
+}
+.btn-fill-small {
+	background-color: #e5efff;
+	color: #357ff2;
+}
+.btn-empty {
+	background-color: #fff;
+	color: #3367d6;
+}
+*:focus { 
+	outline:none; 
+	}
+.main_board_slot{
+	border: 2px solid #fff;
+	align-content: center;
+	width: 80%;
+	height: 1000px;
+}
+.main_board{
+	border: 2px solid #fff;
+	width: 30%;
+	height: 300px;
+	left: 30;
+	border-radius: 12px;
+	
+}
+
+.main_board_title{
+	margin-left: 10px;
+	font-size: large;
+	
+	
+}

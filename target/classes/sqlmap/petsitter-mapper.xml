@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sitter.mapper">
+<select id="list" resultType="petsitter.dto.PetSitterDTO">
+select * from petsitter
+</select>
+<insert id="insert">
+insert into petsitter(nickname,longi,lati,content,si_id) values(#{nickname},#{longi},#{lati},#{content},seq_catholic_pet.nextval)
+</insert>
+<delete id="delete">
+delete from petsitter where si_id=#{si_id}
+</delete>
+</mapper>

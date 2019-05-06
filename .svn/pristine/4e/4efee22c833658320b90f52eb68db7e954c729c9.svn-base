@@ -1,0 +1,55 @@
+package member.dao;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import member.dto.MemberDTO;
+
+
+@Repository
+public class MemberDAOImpl implements MemberDAO {
+	@Autowired SqlSession sql;
+	
+	@Override
+	public boolean insert(MemberDTO dto) {
+		return sql.insert("imember.mapper.insert",dto)>0?true:false;
+	}
+
+	@Override
+	public MemberDTO select(MemberDTO dto) {
+		return sql.selectOne("imember.mapper.selectone",dto);
+	}
+
+	@Override
+	public int check(String userid) {
+		return sql.selectOne("imember.mapper.check", userid);
+	}
+
+
+	@Override
+	public List<MemberDTO> list_member() {
+		return sql.selectList("imember.mapper.list");
+	}
+
+	@Override
+	public int select2(MemberDTO dto) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("imember.mapper.kakaocheck",dto);
+	}
+
+	
+	//À¥ºÎºÐ
+	@Override
+	public MemberDTO login(HashMap<String,String> map) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("imember.mapper.login",map);
+	}
+	
+	
+	
+
+}

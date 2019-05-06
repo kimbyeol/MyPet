@@ -1,0 +1,70 @@
+package calender.service;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import calender.dao.CalenderDAO;
+import calender.dto.CalenderDTO;
+@Service
+public class CalenderServiceImpl implements CalenderService {
+	@Autowired CalenderDAO dao;
+
+	//web
+	@Override
+	public boolean ws_insert(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return dao.ws_insert(map);
+	}
+	
+	
+	//android
+	@Override
+	public String s_insert(CalenderDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.s_insert(dto);
+	}
+
+
+	@Override
+	public String s_delete(String s_id) {
+		// TODO Auto-generated method stub
+		return dao.s_delete(s_id);
+	}
+
+	@Override
+	public String s_update(CalenderDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.s_update(dto);
+	}
+
+	@Override
+	public List<CalenderDTO> s_list(CalenderDTO eo) {
+		System.out.println(eo.getS_name());
+		System.out.println(eo.getS_date());
+		return dao.s_list(eo);
+	}
+
+	@Override
+	public CalenderDTO s_modify(String s_id) {
+		// TODO Auto-generated method stub
+		return dao.s_modify(s_id);
+	}
+
+	@Override
+	public List<CalenderDTO> s_list_all(String s_name) {
+		// TODO Auto-generated method stub
+		return dao.s_list_all(s_name);
+	}
+
+	@Override
+	public List<CalenderDTO> select_title(String s_name) {
+		// TODO Auto-generated method stub
+		return dao.select_title(s_name);
+	}
+
+		
+}

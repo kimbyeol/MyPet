@@ -1,0 +1,32 @@
+@charset "UTF-8";
+.slide{
+	width: 1900px;
+	height: 500px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+	
+}
+.slide ul{
+	width: 7680px;
+	
+	list-style: none;
+	font-size: 0;
+	/* 이미지 끼리 여백을 제거해주기 위해 폰트사이즈 사용 */
+}	
+.slide ul li{
+	display: inline-block;
+	/* 이미지 크기에 맞게 영역을 잡아줌 */
+}
+.slide button.prev{
+	position:absolute;
+	left: 0;
+	top: 200px;
+	
+	
+}
+.slide button.next{
+	position: absolute;
+	right: 0px;
+	top: 200px;
+}

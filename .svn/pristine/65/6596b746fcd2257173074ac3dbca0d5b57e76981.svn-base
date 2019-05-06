@@ -1,0 +1,9 @@
+package petsitter.service;
+
+import java.util.List;
+
+import petsitter.dto.PetSitterDTO;
+
+public interface PetSitterService {
+	List<PetSitterDTO> list();
+}

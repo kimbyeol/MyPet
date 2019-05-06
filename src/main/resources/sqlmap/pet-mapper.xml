@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pet.mapper">
+<insert id="insert_pet">
+insert into pet(petname,gender,owner,species,pet_birth,imagepath,imagename) values(#{petname} ,#{gender} ,#{owner}  ,#{species} ,#{pet_birth},#{imagepath},#{imagename})
+</insert>
+<select id="list_pet" resultType="pet.dto.PetDTO">
+select * from pet where owner=#{nickname}
+</select>
+<update id="update_pet">
+update pet set petname=#{petname},gender=#{gender},species=#{species},pet_birth=#{pet_birth} where id=#{id}
+</update>
+<delete id="delete_pet">
+delete from pet where id=#{id} 
+</delete>
+<insert id="insert_web">
+insert into pet(petname,gender,owner,pet_birth,species,imagepath,imagename) values(#{petname} ,#{gender} ,#{owner} ,#{pet_birth} ,#{species},#{imagepath},#{imagename})
+</insert>
+<select id="all_list" resultType="pet.dto.PetDTO">
+select * from pet where owner=#{owner}
+</select>
+
+</mapper>

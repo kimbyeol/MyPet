@@ -1,0 +1,16 @@
+package com.hanul.CatHolic;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class IntroduceController {
+	
+	
+	@RequestMapping("/ceo.int")
+	public String ceo() {
+		
+		return "introduce/ceo";
+	}
+	
+}

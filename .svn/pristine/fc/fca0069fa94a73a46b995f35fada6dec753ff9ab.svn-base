@@ -1,0 +1,13 @@
+package member.service;
+
+import java.util.List;
+
+import member.dto.MemberDTO;
+
+public interface MemberService {
+	boolean insert(MemberDTO dto);
+	 MemberDTO select(MemberDTO dto);
+	 int check(String userid);
+	 List<MemberDTO> list_member();
+	 int select2(MemberDTO dto);
+}

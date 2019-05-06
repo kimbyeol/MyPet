@@ -1,0 +1,50 @@
+package member.service;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import member.dao.MemberDAO;
+import member.dto.MemberDTO;
+
+
+@Service
+public class MemberServiceImpl implements MemberService {
+	@Autowired MemberDAO dao;
+
+	@Override
+	public boolean insert(MemberDTO dto) {
+		return dao.insert(dto);
+	}
+
+	@Override
+	public MemberDTO select(MemberDTO dto) {
+		return dao.select(dto);
+	}
+
+	@Override
+	public int check(String userid) {
+		return dao.check(userid);
+	}
+
+	@Override
+	public List<MemberDTO> list_member() {
+		return dao.list_member();
+	}
+
+	@Override
+	public int select2(MemberDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.select2(dto);
+	}
+
+	//À¥ºÎºÐ
+	@Override
+	public MemberDTO login(HashMap<String,String> map) {
+		// TODO Auto-generated method stub
+		return dao.login(map);
+	}
+
+}

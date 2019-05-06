@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+<c:if test="${flag eq '1'}">
+<tr><td>보내는사람</td><td>${dto.sender }</td></tr></c:if>
+<c:if test="${flag eq '0' }">
+<tr><td>받는사람</td><td>${dto.receiver }</td></tr></c:if>
+<tr><td colspan="2">${dto.title }</td></tr>
+<tr><td colspan="2">${dto.content }</td></tr>
+</table>
+<c:if test="${flag eq '1'}">
+<input type="button" value="답장" onclick="location='postinsert?receiver=${dto.receiver }'" /></c:if><input type="button" value="삭제" onclick="if(confirm('정말삭제하시겠습니까?'))location='delete.post?po_id=${dto.po_id}&flag=${flag }'"/><input type="button" value="취소" onclick="history.go(-1)"/>
+</body>
+</html>

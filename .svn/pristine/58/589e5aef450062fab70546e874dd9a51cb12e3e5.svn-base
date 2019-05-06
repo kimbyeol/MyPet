@@ -1,0 +1,52 @@
+package calender.service;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import calender.dao.CalenderDAO;
+import calender.dto.CalenderDTO;
+@Service
+public class CalenderServiceImpl implements CalenderService {
+	@Autowired CalenderDAO dao;
+
+	@Override
+	public String s_insert(CalenderDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.s_insert(dto);
+	}
+
+	@Override
+	public String s_delete(String s_id) {
+		// TODO Auto-generated method stub
+		return dao.s_delete(s_id);
+	}
+
+	@Override
+	public String s_update(CalenderDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.s_update(dto);
+	}
+
+	@Override
+	public List<CalenderDTO> s_list(CalenderDTO eo) {
+		System.out.println(eo.getS_name());
+		System.out.println(eo.getS_date());
+		return dao.s_list(eo);
+	}
+
+	@Override
+	public CalenderDTO s_modify(String s_id) {
+		// TODO Auto-generated method stub
+		return dao.s_modify(s_id);
+	}
+
+	@Override
+	public List<CalenderDTO> s_list_all(String nickname) {
+		// TODO Auto-generated method stub
+		return dao.s_list_all(nickname);
+	}
+
+}

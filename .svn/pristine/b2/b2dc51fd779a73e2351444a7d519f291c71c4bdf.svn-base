@@ -1,0 +1,71 @@
+package board.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import board.dto.BoardCommentDTO;
+import board.dto.BoardDTO;
+
+@Repository
+public class BoardDAOImpl implements BoardDAO {
+	@Autowired SqlSession sql;
+
+	@Override
+	public List<BoardDTO> board_list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String board_insert(BoardDTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String board_update(BoardDTO dto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String board_delete(int bo_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BoardDTO board_modify(int bo_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+	@Override
+	public String board_comment_insert(BoardCommentDTO dto) {
+		// TODO Auto-generated method stub
+		return sql.insert("board.mapper.comm_insert",dto)>0?"succ":"fail";
+	}
+
+	@Override
+	public String board_comment_delete(int comm_id) {
+		// TODO Auto-generated method stub
+		return sql.delete("board.mapper.comm_delete",comm_id)>0?"succ":"fail";
+	}
+
+	@Override
+	public String board_comment_update(BoardCommentDTO dto) {
+		// TODO Auto-generated method stub
+		return sql.update("board.mapper.comm_update",dto)>0?"succ":"fail";
+	}
+
+	@Override
+	public List<BoardDTO> board_comment_list(int p_id) {
+		// TODO Auto-generated method stub
+		return sql.selectList("board.mapper.comm_list");
+	}
+}

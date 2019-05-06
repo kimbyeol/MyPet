@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div style="font-size: 13px; margin-top: 20px; " >
+<hr>
+<div style="text-align: center;">
+<a style="font-style: oblique;"> [테스팅]주소 : 935 Pennsylvania Ave NW, Washington, DC 20535 </a>
+<a>|</a>
+<a  style="font-style: oblique;"> [테스팅]대표자 : 도라에몽</a>
+<a>|</a>
+<a  style="font-style: oblique;"> [테스팅]사훈 : 이세계의 진구를 몰아내자</a>
+
+</div>
+</div>

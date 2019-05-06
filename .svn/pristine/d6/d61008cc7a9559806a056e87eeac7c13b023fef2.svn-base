@@ -1,0 +1,126 @@
+package com.hanul.CatHolic;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
+
+import board.dto.BoardCommentDTO;
+import board.dto.BoardDTO;
+import board.service.BoardService;
+import calender.dto.CalenderDTO;
+
+@Controller
+public class BoardController {
+	@Autowired BoardService service;
+	Gson gson= new Gson();
+	
+	@ResponseBody
+	@RequestMapping("/minsert.bo")
+	public String insert(BoardDTO dto,@RequestBody BoardDTO vo) {
+		dto=vo;
+		service.board_insert(dto);
+		
+		return "";
+	}
+	@ResponseBody
+	@RequestMapping("/mdelete.bo")
+	public String delete(@RequestParam int bo_id) {
+		service.board_delete(bo_id);
+		return "";
+	}
+	@ResponseBody
+	@RequestMapping("/mupdate.bo")
+	public String update(BoardDTO dto,@RequestBody BoardDTO vo) {
+		dto=vo;
+		service.board_update(dto);
+		return "";
+	}
+	@ResponseBody
+	@RequestMapping("/mlist.bo")
+	public String list() throws ParseException {
+		Gson gson= new Gson();
+		;
+		System.out.println("게시판들어옵니다");
+		ArrayList<BoardDTO> dto = (ArrayList<BoardDTO>) service.board_list();
+		if(dto.size()==0) {
+			dto=null;
+		}else {
+		for(int i=0;i<dto.size();i++) {
+		Date dateSt;
+	
+		dateSt = new SimpleDateFormat("yyyy-mm-dd",Locale.ENGLISH).parse(dto.get(i).getWritedate().toString());
+		
+		String st2 = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(dateSt);
+		dto.get(i).setWritedate(null);
+		dto.get(i).setDatestring(st2);
+		}
+		}
+		
+		String DD=gson.toJson(dto);
+		return DD;
+	}
+	@ResponseBody
+	@RequestMapping("/mlist_class.bo")
+	public String list_class(@RequestParam String classfy) {
+		Gson gson= new Gson();
+		String dd=gson.toJson(service.board_list_class(Integer.parseInt(classfy)));
+		return dd;
+	}
+	@ResponseBody
+	@RequestMapping("/mmodify.bo")
+	public String modify(@RequestParam String bo_id) {
+		service.read_board(Integer.parseInt(bo_id));
+		Gson gson= new Gson();
+		String DD=gson.toJson(service.board_modify(Integer.parseInt(bo_id)));
+		return DD;
+	}
+	
+	
+	
+	//댓글
+	@ResponseBody
+	@RequestMapping("/mcomm_insert.bo")
+	public String comm_insert(BoardCommentDTO dto,@RequestBody BoardCommentDTO vo) {
+		dto=vo;
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("succ",service.board_comment_insert(dto));
+		String VV=gson.toJson(map);
+		return VV;
+	}
+	@ResponseBody
+	@RequestMapping("/mcomm_delete.bo")
+	public String comm_delete(@RequestParam int comm_id) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("succ",service.board_comment_delete(comm_id));
+		String VV=gson.toJson(map);
+		return VV;
+	}
+	@ResponseBody
+	@RequestMapping("/mcomm_update.bo")
+	public String comm_update(BoardCommentDTO dto,@RequestBody BoardCommentDTO vo) {
+		dto=vo;
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("succ",service.board_comment_update(dto));
+		String VV=gson.toJson(map);
+		return VV;
+	}
+	@ResponseBody
+	@RequestMapping("/mcomm_list.bo")
+	public String comm_list(@RequestParam String p_id) {
+		String VV=gson.toJson(service.board_comment_list(Integer.parseInt(p_id)));
+		return VV;
+	}
+}

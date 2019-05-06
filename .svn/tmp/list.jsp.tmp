@@ -1,0 +1,644 @@
+<<<<<<< .mine
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+
+    pageEncoding="UTF-8"%>
+||||||| .r147
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+>>>>>>> .r166
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+<script type="text/javascript" src="js/jquery-ui-1.12.1.min.js"></script>
+<<<<<<< .mine
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-ko.js"></script>
+
+||||||| .r147
+=======
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-ko.js"></script>
+>>>>>>> .r166
+<style type="text/css">
+<<<<<<< .mine
+
+img.ui-datepicker-trigger {
+    cursor:pointer;
+    display: inline;
+    margin-left: 7px;
+    vertical-align: middle;
+}
+||||||| .r147
+=======
+
+img.ui-datepicker-trigger {
+    cursor:pointer;
+    display: inline;
+    margin-left: 7px;
+    vertical-align: middle;
+}
+
+.ui-datepicker {
+	font-size: 13px;
+}
+	
+>>>>>>> .r166
+.animal_info{
+	width:100%;
+	height:120px;
+}
+.select_box{
+	border-bottom:1px solid #d6d5d2;
+	padding-left:20px;
+	background-color: #f9fafc;
+	height: 40px;
+	line-height: 40px;
+	text-align: left;
+}
+.page_area{
+	background-color: #f9fafc;
+	height: 40px;
+}
+
+.list_box{
+	border:1px solid #d6d5d2;
+	width: 780px;
+	margin: 0 auto;
+}
+
+th, strong{
+	font-size: large;
+}
+
+.cur_page{
+	color: orange;
+}
+.total{
+	color: #777;
+}
+.page_num{
+	color: #ccc;
+}
+.prev_page{	
+	background: url("img/ani_prev_page.png") center no-repeat;
+}
+.next_page{
+	background: url("img/ani_next_page.png") center no-repeat;
+}
+.prev_page, .next_page{
+	display: inline-block;
+	text-indent: -99999px;
+	width: 37px;
+	height: 27px;
+}
+.prev_page:hover {
+	background: url("img/ani_prev_page_ch.png") center no-repeat;
+}
+
+.next_page:hover{
+	background: url("img/ani_next_page_ch.png") center no-repeat;
+}
+
+.page_box{
+	padding: 5px 0;
+	line-height: 30px;
+}
+
+.filter{
+	margin: 0 30px;
+}
+.filter a:hover{
+	text-decoration: underline;
+}
+.place_box, .breed_box, .datepick{
+	position:absolute;
+	border: 1px solid #ccc;
+	z-index: 50;
+	background-color: #fff;
+}
+<<<<<<< .mine
+.filter_box{
+	width: 778px;
+||||||| .r147
+=======
+.place_box, .breed_box{
+>>>>>>> .r166
+	height: 400px;
+}
+<<<<<<< .mine
+
+.filter_list1, .filter_list2, .filter_list3{
+	display:inline-block;
+	width: 255px;
+	height: 400px;
+	
+}
+.filter_list1, .filter_list2{
+	border-right: 1px solid #ccc;
+}
+||||||| .r147
+=======
+
+.filter_title{
+	height: 38px;
+	line-height: 38px;
+	border-bottom: 1px solid #ccc;
+	color:#424242;
+	font-size: large;
+	text-align: left;
+}
+.filter_title div{
+	display: inline-block;
+	width: 251px;
+	padding-left: 5px;
+}
+
+.filter_list1, .filter_list2, .filter_list3, .filter_list4, .filter_list5{
+	display:inline-block; 
+	width: 257px;
+	/* height: 361px; */
+}
+/* .filter_list1, .filter_list2, .filter_list4{
+	border-right: 1px solid #ccc;
+} */
+.filter_list5{
+	width: 519px;
+
+}
+>>>>>>> .r166
+.datepick{
+	width: 130px;
+	height: 110px;
+	padding: 20px;
+	line-height: 40px;
+	margin-left: 237px;
+}
+
+.start_date, .end_date{
+	border: 1px solid #ccc;
+	width: 80%;
+	height: 25px;
+	margin-bottom: 10px;
+	color: #777;
+	text-align: center;
+}
+<<<<<<< .mine
+
+</style>
+||||||| .r147
+=======
+
+.list_box ul{
+	padding: 10px;
+	line-height: 25px;
+	overflow-y: scroll;
+	height: 341px;
+	
+}
+
+li a{
+	color: black;
+	text-decoration: none;
+}
+li a:hover{
+	text-decoration: underline;
+}
+>>>>>>> .r166
+
+<<<<<<< .mine
+ 
+
+||||||| .r147
+=======
+</style>
+>>>>>>> .r166
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1 style="margin-top: 60px">동물보호시설 보호중 동물조회</h1>
+<div class="list_box">
+	<div class="select_box">
+<<<<<<< .mine
+		<span class="filter"><a class="place">지역</a></span>
+		<span class="filter"><a class="breed">품종</a></span>
+		<span class="filter"><a class="date" onclick="show_datepick()">${startDate} ~ ${todayDate }</a></span>
+||||||| .r147
+=======
+		<span class="filter"><a class="place" onclick="show_place()">지역</a></span>
+		<span class="filter"><a class="breed" onclick="show_breed()">품종</a></span>
+		<span class="filter"><a class="date" onclick="show_datepick()">${startDate} ~ ${todayDate }</a></span>
+>>>>>>> .r166
+	</div>
+<<<<<<< .mine
+	<div class="filter_box">
+		<div class="filter_list1"></div>
+		<div class="filter_list2"></div>
+		<div class="filter_list3"></div>
+||||||| .r147
+=======
+	<div class="place_box" style="display: none;">
+		<div class="filter_title">
+			<div class="title1">시/도</div>
+			<div class="title2">시/군/구</div>
+			<div class="title3">보호센터</div>
+		</div>
+		<div class="filter_list1">
+			<ul id="sido"></ul>
+		</div>
+		<div class="filter_list2">
+			<ul id="sigungu"></ul>
+		</div>
+		<div class="filter_list3">
+			<ul id="care"></ul>
+		</div>
+>>>>>>> .r166
+	</div>
+<<<<<<< .mine
+	<div class="datepick" style="display: none;">
+		<input class="start_date" type="text" name="start" readonly="readonly" value="${startDate}"/><br/>
+||||||| .r147
+=======
+	<div class="breed_box" style="display: none;">
+		<div class="filter_title">
+			<div class="title1">동물</div>
+			<div class="title2">품종</div>
+		</div>
+		<div class="filter_list4">
+			<ul id="upkind"></ul>
+		</div>
+		<div class="filter_list5">
+			<ul id="kind"></ul>
+		</div>
+	</div>
+	<div class="datepick" style="display: none;">
+		<input class="start_date" type="text" name="start" readonly="readonly" value="${startDate }"/><br/>
+>>>>>>> .r166
+		<input class="end_date" type="text" name="end" readonly="readonly" value="${todayDate }"/><br/>
+		<a class="btn-fill" onclick="setDate()">적용하기</a>
+	</div>
+	<div class="animal_list">
+		<c:forEach begin="0" end="9" varStatus="status">
+			<table class="animal_info" border="1">
+				<tbody style="line-height: 30px;">
+					<tr>
+						<td id="notice_no-${status.index }" colspan="4" class="notice_no" style="background-color: orange; font-size: 1.2em;">&nbsp;</td>
+					</tr>
+					<tr>
+						<td id="kind-${status.index }" width="23%" class="kind">&nbsp;</td>
+						<td id="gender-${status.index }" class="gender">&nbsp;</td>
+						<td id="state-${status.index }" class="state" style="color: orange;">&nbsp;</td>
+						<td id="info_img-${status.index }" rowspan="6" class="info_img" width="170px">
+						<img width="170px" height="163px" />
+						</td>
+					</tr>
+					<tr>
+						<th class="cell_name">발견</th>
+						<td id="happen-${status.index }" colspan="2" class="happen, left" style="padding-left: 10px"></td>
+					</tr>
+					<tr>
+						<th class="cell_name">특징</th>
+						<td id="special-${status.index }" colspan="2" class="special, left" style="padding-left: 10px"></td>
+					</tr>
+					<tr>
+						<th class="cell_name">공고</th>				
+						<td id="notice_date-${status.index }" colspan="2" class="notice_date, left" style="padding-left: 10px"></td>
+					</tr>
+					<tr>
+						<th class="cell_name">보호센터</th>
+						<td id="care_name-${status.index }" class="care_name"></td>
+						<td id="care_tel-${status.index }" class="care_tel"></td>
+					</tr>
+				</tbody>
+			</table>
+		</c:forEach>
+	</div>
+	<div class="page_area">
+		<div class="page_box">
+			<a class="prev_page" onclick="prevPage()">이전</a>
+				<span class="page_num">
+					<strong class="cur_page"></strong>
+						 / 
+					<strong class="total"></strong>
+				</span>
+			<a class="next_page" onclick="nextPage()">다음</a>
+		</div> 
+	</div>
+</div>
+
+ 
+<script type="text/javascript">
+$(document).ready(function () {
+<<<<<<< .mine
+	var today = new Date();
+	var today_month = (today.getMonth() +1);
+	/* var startmonth =  */
+	
+	$.datepicker.setDefaults($.datepicker.regional['ko']); 
+ 	$('[name=start]').datepicker({
+		dateFormat: 'yy-mm-dd',
+ 		maxDate:0,
+ 		minDate:0,
+ 		showOn: "button",
+ 		buttonImage: "img/ic_datepick.png",
+ 	    buttonImageOnly: true,
+ 	    buttonText: "Select date"
+	}); 
+ 	
+	$.datepicker.setDefaults($.datepicker.regional['ko']); 
+||||||| .r147
+=======
+	show_list(0,0,0);
+	data_sido();
+	
+	var defaultDate = ${year} + '-' + ${month+1} + '-' + ${date};
+	
+	$.datepicker.setDefaults($.datepicker.regional['ko']); 
+ 	$('[name=start]').datepicker({
+		dateFormat: 'yy-mm-dd',
+ 		maxDate:0,
+ 		minDate:new Date(${year}, ${month-5}, ${date}),
+ 		showOn: "button",
+ 		buttonImage: "img/ic_datepick.png",
+ 	    buttonImageOnly: true,
+ 	    buttonText: "Select date",
+
+	}); 
+
+>>>>>>> .r166
+ 	$('[name=end]').datepicker({
+		dateFormat: 'yy-mm-dd',
+<<<<<<< .mine
+ 		maxDate: 0,
+ 		minDate:new Date(),
+ 		showOn: "button",
+ 		buttonImage: "img/ic_datepick.png",
+ 	    buttonImageOnly: true,
+ 	    buttonText: "Select date"
+||||||| .r147
+=======
+ 		maxDate: 0,
+ 		minDate:new Date(${year}, ${month-5}, ${date}),
+ 		showOn: "button",
+ 		buttonImage: "img/ic_datepick.png",
+ 	    buttonImageOnly: true,
+ 	    buttonText: "Select date",
+
+>>>>>>> .r166
+	}); 
+<<<<<<< .mine
+
+||||||| .r147
+=======
+
+ /* 	$('a[selected=true]').css('color', 'orange'); */
+
+
+});
+
+function show_datepick() {
+>>>>>>> .r166
+	
+<<<<<<< .mine
+
+||||||| .r147
+=======
+	$('.place_box').css('display','none');
+	$('.breed_box').css('display','none');
+	$('.place').css('color','black');
+	$('.breed').css('color','black');
+>>>>>>> .r166
+	
+	var datepick = document.querySelector(".datepick");
+	var datetext = document.querySelector(".date");
+	
+	if(datepick.style.display == 'none'){
+		datepick.style.display='block';
+		datetext.style.color='orange';
+	}else{
+		datepick.style.display='none';
+		datetext.style.color='black';		
+	}
+
+<<<<<<< .mine
+ 
+
+});
+||||||| .r147
+=======
+	
+}
+
+function show_place() {
+	
+	$('.datepick').css('display','none');
+	$('.breed_box').css('display','none');
+	$('.date').css('color','black');
+	$('.breed').css('color','black');
+	
+	var placefilter = document.querySelector(".place_box");
+	var placetext = document.querySelector(".place");
+	
+	if(placefilter.style.display == 'none'){
+		placefilter.style.display='block';
+		placetext.style.color='orange';
+	}else{
+		placefilter.style.display='none';
+		placetext.style.color='black';		
+	}
+	
+}
+
+function show_breed() {
+	$('.datepick').css('display','none');
+	$('.place_box').css('display','none');
+	$('.date').css('color','black');
+	$('.place').css('color','black');
+	
+	var breedfilter = document.querySelector(".breed_box");
+	var breedtext = document.querySelector(".breed");
+	
+	if(breedfilter.style.display == 'none'){
+		breedfilter.style.display='block';
+		breedtext.style.color='orange';
+	}else{
+		breedfilter.style.display='none';
+		breedtext.style.color='black';		
+	}
+}
+>>>>>>> .r166
+
+<<<<<<< .mine
+ 
+||||||| .r147
+=======
+function setDate() {
+	
+}
+>>>>>>> .r166
+
+<<<<<<< .mine
+function show_datepick() {
+	
+	var datepick = document.querySelector(".datepick");
+	var datetext = document.querySelector(".date");
+	
+	if(datepick.style.display == 'none'){
+		datepick.style.display='block';
+		datetext.style.color='orange';
+	}else{
+		datepick.style.display='none';
+		datetext.style.color='black';		
+	}
+||||||| .r147
+=======
+function prevPage() {
+	$.ajax({
+		url: 'api/abandonment/page',
+		success: function(data){
+			
+		},
+		error: function(req){
+			alert(req.status);
+		}
+	});
+}
+>>>>>>> .r166
+
+<<<<<<< .mine
+	
+
+}
+
+ 
+
+ 
+
+ 
+||||||| .r147
+=======
+function nextPage() {
+	$.ajax({
+		url: 'api/abandonment/page',
+		success: function(data){
+			
+		},
+		error: function(req){
+			alert(req.status);
+		}
+	});
+}
+
+function show_list(sido, sigungu, shelter) {
+	$('.place_box').css('display','none');
+	$('.breed_box').css('display','none');
+	$('.datepick').css('display','none');
+	$('.date').css('color','black');
+	$('.place').css('color','black');
+	$('.breed').css('color','black');
+	
+	$.ajax({
+		data: { sido: sido!=0?sido:'',
+				sigungu: sigungu!=0?sigungu:'',
+				shelter: shelter!=0?shelter:''
+		},
+		url: 'api/abandonment/list',
+		success: function (data) {
+			if($(data).find('totalCount').text() != 0){
+				$('.animal_list').css('display','block');
+				
+				$(data).find('item').each(function (idx) {
+					//(수정)암컷,수컷,미상으로 문자 변환하기
+					$('#gender-'+idx).text($(this).find('sexCd').text());
+					$('#notice_no-'+idx).text($(this).find('noticeNo').text());		
+					$('#kind-'+idx).text($(this).find('kindCd').text());		
+					$('#state-'+idx).text($(this).find('processState').text());		
+					$('#happen-'+idx).text($(this).find('happenPlace').text());		
+					$('#special-'+idx).text($(this).find('specialMark').text());		
+					//(수정)2018-11-24 형식으로 변환하기
+					$('#notice_date-'+idx).text($(this).find('noticeSdt').text() + '~' + $(this).find('noticeEdt').text());		
+					$('#care_name-'+idx).text($(this).find('careNm').text());		
+					$('#care_tel-'+idx).text($(this).find('careTel').text());		
+					$('#info_img-'+idx+' img').attr('src', $(this).find('filename').text());					
+				});				
+			}else{
+				$('.animal_list').css('display','none');			
+			}
+		
+		},
+		error: function (req) {
+			alert(req.status);
+		}
+	});
+}
+//시도
+function data_sido() {
+	$.ajax({
+		url: 'api/abandonment/sido',
+		success: function(data){
+			var tag = '<li><a selected="true" class="sido_data" onclick="data_sigungu(0)">전체</a></li>';
+			$(data).find('item').each(function () {
+				tag += '<li><a selected="false" class="sido_data" onclick="data_sigungu('+$(this).find('orgCd').text()+')">'+ $(this).find('orgdownNm').text() +'</a></li>';			
+			});
+				$('#sido').html(tag);
+		},
+		error: function(req){
+			alert(req.status);
+		}
+	});
+}
+
+//시군구
+function data_sigungu(sido) {
+	$('#care').html('');
+	
+	$.ajax({
+		data:{sido: sido!=0?sido:''},
+		url: 'api/abandonment/sigungu',
+		success: function(data){
+			var tag = '<li><a selected="false" class="sigungu_data" onclick="data_care('+sido+',0)">전체</a></li>';
+			$(data).find('item').each(function () {
+				tag += '<li><a selected="false" class="sigungu_data" onclick="data_care('+sido+','+ $(this).find('orgCd').text()+')">'+ $(this).find('orgdownNm').text() +'</a></li>';			
+			});
+				$('#sigungu').html(tag);
+		},
+		error: function(req){
+			alert(req.status);
+		}
+	});
+}
+
+//보호소
+function data_care(sido, sigungu) {
+	$.ajax({
+		data:{sido: sido!=0?sido:'',
+			  sigungu: sigungu!=0?sigungu:''
+		},
+		url: 'api/abandonment/care',
+		success: function(data){
+			var tag = '<li><a selected="false" class="care_data" onclick="show_list('+sido+','+sigungu+',0)">전체</a></li>';
+			$(data).find('item').each(function () {
+				tag += '<li><a selected="false" class="care_data" onclick="show_list('+sido+','+sigungu+','+$(this).find('careRegNo').text()+')">'+ $(this).find('careNm').text() +'</a></li>';			
+			});
+				$('#care').html(tag);
+		},
+		error: function(req){
+			alert(req.status);
+		}
+	});
+} 
+
+
+
+
+>>>>>>> .r166
+
+</script>
+
+</body>
+
+</html>

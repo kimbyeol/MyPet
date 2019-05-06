@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxPudJYkryxX6a3KA7E-yi--QJvzKahf4&callback=iniMap"></script>
+<style type="text/css">
+#map {height: 400px;
+width: 800px;
+	
+}
+</style>
+</head>
+<body>
+<div>
+<h3>Sitter 등록하기</h3>
+<input type="text" id="si_content" width="150px"/><input type="button" value="등록하기"/>
+
+</div>
+<h3>펫시터들</h3>
+<div id="mapdiv">
+	<div id="map"></div>
+</div>
+<script type="text/javascript">
+function iniMap(){
+	var list[];
+	$.ajax({
+		url:"list.petsitter",
+		success:function(data){
+			list=data
+			alert(data);
+		},
+		error:function(req){
+			alert(req.status);
+		}
+	});
+	var map=new google.maps.Map(document.getElementById('map'),{zomm:15});
+	
+}
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+package com.hanul.CatHolic;
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import calender.dto.CalenderDTO;
+import calender.service.CalenderService;
+
+@Controller
+public class CalenderController {
+	@Autowired CalenderService service;
+	Gson gson= new Gson();
+	
+	@RequestMapping("/minsert.cal")
+	public @ResponseBody String insert(CalenderDTO eo,@RequestBody Map<String,String> map) {
+		//안드로이드에서 받아온 Map DTO에 담기
+		eo.setS_name(map.get("s_name").toString());
+		eo.setS_title(map.get("s_title").toString());
+		eo.setS_content(map.get("s_content").toString());
+		 Date date = null;
+		try {
+			date = (Date) new SimpleDateFormat("yyyy-MM-dd",Locale.KOREA).parse(map.get("s_date").toString());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		eo.setS_date(date);
+		System.out.println("232323");
+		//안드로이드로 돌려 보낼 map생성
+		HashMap<String, String> map2 = new HashMap<String, String>();
+		map2.put("succ", service.s_insert(eo)); //결과 "succ":"succ" 또는 "succ":"fail" 생성
+
+        //json 형식으로 변환 뒤 String 값으로 반환
+         String io=gson.toJson(map2);
+         System.out.println(io);
+		return io; 
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/mdelete.cal")
+	public String delete(@RequestParam String s_id) {
+		HashMap<String, String> map= new HashMap<String, String>();
+		map.put("succ", service.s_delete(s_id));
+		
+		String FF= gson.toJson(map);
+		return FF;
+	}
+	@ResponseBody
+	@RequestMapping("/mupdate.cal")
+	public String update(CalenderDTO dto,@RequestBody HashMap<String, String> map) {
+		dto.setS_id(Integer.parseInt(map.get("s_id").toString()));
+		dto.setS_title(map.get("s_title").toString());
+		dto.setS_content(map.get("s_content").toString());
+		HashMap<String, String> map2=new HashMap<String, String>();
+		map2.put("succ", service.s_update(dto));
+		String RR=gson.toJson(map2);
+		return RR;
+	}
+	@ResponseBody
+	@RequestMapping("/mmodify.cal")
+	public String modify(CalenderDTO dto, @RequestParam String s_id) throws ParseException {
+		System.out.println(s_id);
+		dto=service.s_modify(s_id);
+		Date dateSt = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy",Locale.ENGLISH).parse(dto.getS_date().toString());
+		String st2 = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(dateSt);
+
+		
+		dto.setS_date(null);
+		dto.setS_datestring(st2);
+		String RR=gson.toJson(dto);
+		System.out.println(RR);
+		return RR;
+	}
+	@ResponseBody
+	@RequestMapping("/mlist.cal")
+	public String s_list(CalenderDTO eo,@RequestBody HashMap<String, String> map) throws ParseException {
+				//s_name파라메터로 결과 받아와 List화 한값 json 형식 String으로 리턴
+		System.out.println("여기옵니닷");
+		eo.setS_name(map.get("s_name").toString());
+		
+		Date date = null;
+		date = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(map.get("s_date").toString());
+		
+		eo.setS_date(date);
+		ArrayList<CalenderDTO> dto = (ArrayList<CalenderDTO>) service.s_list(eo);
+		if(dto.size()==0) {
+			dto=null;
+		}else {
+		for(int i=0;i<dto.size();i++) {
+		Date dateSt = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy",Locale.ENGLISH).parse(dto.get(i).getS_date().toString());
+		String st2 = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(dateSt);
+		dto.get(i).setS_date(null);
+		dto.get(i).setS_datestring(st2);
+		}
+		}
+		String FF=gson.toJson(dto);
+		
+		System.out.println("잘가");
+		return FF;
+	}
+	@ResponseBody
+	@RequestMapping("mlist_all.cal")
+	public String s_list_all(@RequestParam String nickname) throws ParseException {
+		
+		ArrayList<CalenderDTO> vo=(ArrayList<CalenderDTO>) service.s_list_all(nickname);
+		for(int i=0;i<vo.size();i++) {
+			Date dateSt = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy",Locale.ENGLISH).parse(vo.get(i).getS_date().toString());
+			String st2 = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(dateSt);
+			vo.get(i).setS_date(null);
+			vo.get(i).setS_datestring(st2);
+			}
+		String FF=gson.toJson(vo);
+		System.out.println(vo.get(0).getS_date());
+		return FF;
+	}
+
+}

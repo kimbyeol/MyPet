@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+
+<tiles-definitions>
+   <!-- base-definition -->
+	<definition name="layout" template="/WEB-INF/views/tiles/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/include/header.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/include/footer.jsp"/>
+		
+	</definition>
+	
+<!--  empty_tiles -->
+	<definition name="post/*" template="/WEB-INF/views/tiles/empty_tiles.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/post/{1}.jsp" />
+	</definition>	
+	<definition name="member/*" template="/WEB-INF/views/tiles/empty_tiles.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/member/{1}.jsp" />
+	</definition>	
+	
+<!-- cat holic 메뉴 바 사용시 적용되는 것-->
+	<definition name="inner_layout" template="/WEB-INF/views/tiles/inner_layout.jsp">
+		<put-attribute name="header" 
+			value="/WEB-INF/views/include/header.jsp"/>
+		<put-attribute name="side" 
+			value="/WEB-INF/views/include/side.jsp"/>
+		<put-attribute name="footer" 
+			value="/WEB-INF/views/include/footer.jsp"/>
+	</definition>
+		
+	
+	<definition name="error/*" 
+				template="/WEB-INF/views/tiles/error.jsp" >
+		<put-attribute name="main" 
+				value="/WEB-INF/views/error/{1}.jsp"/>
+	</definition>
+	
+<!-- 	notice/list
+		customer/detail
+ -->
+	<definition name="*/*" extends="layout">
+		<put-attribute name="main"
+			value="/WEB-INF/views/{1}/{2}.jsp"/>
+	</definition>
+	
+<!-- 	home -->
+	<definition name="*" extends="layout">
+		<put-attribute name="main" value="/WEB-INF/views/home.jsp"/>
+	</definition>
+	
+	<!-- cat holic 메뉴 바 사용시 적용되는 것-->
+	<definition name="introduce/*" extends="inner_layout">
+		<put-attribute name="main" value="/WEB-INF/views/mypage/{1}.jsp"/>
+	</definition>
+</tiles-definitions>

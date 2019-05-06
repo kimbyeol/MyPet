@@ -1,0 +1,53 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page session="false" %>
+<html>
+<head>
+	<title>home</title>
+<!-- 	<link rel="stylesheet" href="resources/css/common.css">
+	<link rel="stylesheet" href="resources/css/unit.css"> -->
+<!-- 	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+	<script src="resources/js/controller.js"></script>
+</head>
+
+<body>
+	<!-- 슬라이더 뷰 -->
+	<img alt="" src="">
+	<div class="slide" style="margin-top: 8px">
+		<button class="prev" type="button"><img alt="" src="resources/img/left-arrow.png"/></button>
+		<ul>
+			<li><img alt="" src="resources/img/cat_1.jpg"></li>
+			<li><img alt="" src="resources/img/cat_2.jpg"></li>
+			<li><img alt="" src="resources/img/cat_3.jpg"></li>
+			<li><img alt="" src="resources/img/cat_4.jpg"></li>
+			<!-- <li><img alt="" src="resources/img/cat_5.jpg"></li> -->
+		</ul>
+		<button class="next" type="button"><img alt="" src="resources/img/right-arrow.png"/></button>
+	
+	</div>
+	<div class="main_board_slot" style="margin: 0 auto; margin-top: 20px;">
+	<!--  공지사항 게시판 간략히 보기 -->
+	<div class="main_board" style="margin: 30px; float: left; background-image: url('resources/img/board_backgroud.jpg'); margin-left: 240px;"  >
+		<a style="margin: 0 auto; font-weight: bold; font-size: 30px; " >공지사항 게시판</a>
+		<hr>
+		<br>
+		<div class="main_board_title">안녕하세요 반갑습니다</div><br>
+		<div class="main_board_title">여기는 공지사항입니다</div><br>
+		<div class="main_board_title">홈페이지 사용관련 안내입니다.</div><br>
+		
+		
+		
+	</div>
+	<div class="main_board" style="margin: 30px; margin-left: 850px; margin-bottom: 500px;  background-image: url('resources/img/board_backgroud.jpg');" >
+		<a style="margin: 0 auto; font-weight: bold; font-size: 30px;">자유게시판</a>
+		<hr>
+		<div class="main_board_title">안녕하세요 반갑습니다</div><br>
+		<div class="main_board_title">여기는 자유게시판입니다</div><br>
+		<div class="main_board_title">자유게시판 규정을 준수해주세요</div><br>
+		
+			
+	</div>
+	</div>
+</body>
+</html>

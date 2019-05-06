@@ -1,0 +1,72 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body >
+	<br>
+	<table border="1" style="width: 50%; line-height: 2em;">
+		<tr class="mytrpage" style="background-color: orange;">
+			<th width="1%">번호</th>
+			<th width="3%">아이디</th>
+			<th width="3%">닉네임</th>
+			<th width="5%">이메일</th>
+			<th width="1%">삭제</th>
+		</tr>
+		<tr>
+			<td >7</td>
+			<td >zozo894</td>
+			<td >꾀꼬리</td>
+			<td>zozo894@hanmail.net</td>
+			<td ><img alt="" src="resources/img/delete_page.png" class="delete"></td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>admin</td>
+			<td>운영자</td>
+			<td>admin@hanmail.net</td>
+			<td><img alt="" src="resources/img/delete_page.png" class="delete"></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>타잔</td>
+			<td>tazan</td>
+			<td>tazan@google.com</td>
+			<td><img alt="" src="resources/img/delete_page.png" class="delete"></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>page</td>
+			<td>테스트</td>
+			<td>jein@google.com</td>
+			<td><img alt="" src="resources/img/delete_page.png"class="delete" ></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>girl</td>
+			<td>스토리</td>
+			<td>boy@naver.com</td>
+			<td><img alt="" src="resources/img/delete_page.png"class="delete" ></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>gundamwing</td>
+			<td>건담</td>
+			<td>gundam123@naver.com</td>
+			<td><img alt="" src="resources/img/delete_page.png"class="delete" ></td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>test</td>
+			<td>테스팅</td>
+			<td>testing@test.test</td>
+			<td><img alt="" src="resources/img/delete_page.png" class="delete"></td>
+		</tr>
+		
+		
+	</table>
+</body>
+</html>

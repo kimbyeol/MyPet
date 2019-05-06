@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice.mapper">
+
+<select resultType="notice.dto.NoticeDTO" id="notice.mapper.allList"> select * from notice </select>
+
+<insert id="insert">
+ insert into notice(no_id,writer,title,content) values(seq_catholic_notice.nextval,#{writer},#{title},#{content})
+</insert>
+
+<delete id="delete">
+delete from notice where no_id=#{no_id}
+</delete>
+
+<update id="update">
+update notice set title=#{title},content=#{content} where no_id=#{no_id}
+</update>
+
+<select id="notice.mapper.selectone" resultType="notice.dto.NoticeDTO">
+select * from notice where no_id=#{no_id}
+</select>
+
+<!-- Web -->
+
+<select id="total" resultType="integer">
+select count(*) from notice 
+</select>
+
+<select id="List" resultType="notice.dto.NoticeDTO">
+select *
+from (select n.*, rownum no from notice n order by no desc) n
+where no between #{beginList} and #{endList} 
+
+</select>
+
+
+<insert id="webinsert">
+ insert into notice(no_id,writer,title,content) values(seq_catholic_notice.nextval,#{writer},#{title},#{content})
+</insert>
+
+<delete id="webdelete">
+delete from notice where no_id=#{no_id}
+</delete>
+
+<update id="webupdate">
+update notice set title=#{title},content=#{content} where no_id=#{no_id}
+</update>
+
+<select id="webselect" resultType="notice.dto.NoticeDTO">
+select * from notice where no_id=#{no_id}
+</select>
+
+
+
+
+
+</mapper>

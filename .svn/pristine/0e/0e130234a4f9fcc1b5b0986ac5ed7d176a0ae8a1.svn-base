@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board.mapper">
+<insert id="insert">
+insert into board(title,classfy,nickname,content,imagepath,imagename) values(#{title},#{classfy},#{nickname},#{content},#{imagepath},#{imagename})
+</insert>
+<select id="list" resultType="board.dto.BoardDTO">
+select b.*,(select count(*) from comm where b.bo_id=p_id) comm_count from board b order by  bo_id desc
+</select>
+<update id="update">
+update board set title=#{title},content=#{content},imagepath=#{imagepath},imagename=#{imagename}
+</update>
+<delete id="delete">
+delete from board where bo_id=#{bo_id}
+</delete>
+<select id="modify" resultType="board.dto.BoardDTO">
+select b.*,(select count(*) from comm where b.bo_id=p_id) comm_count from board b where bo_id=#{bo_id}
+</select>
+<select id="list_class" resultType="board.dto.BoardDTO">
+select b.*,(select count(*) from comm where b.bo_id=p_id) comm_count from board b where classfy=#{classfy}
+</select>
+<update id="read">
+update board set cnt=(cnt+1) where bo_id=#{bo_id}
+</update>
+<insert id="comm_insert">
+insert into comm(p_id,content,writer) values(#{p_id},#{content},#{writer})
+</insert>
+<update id="comm_update">
+update comm set content=#{content} where comm_id=#{comm_id} 
+</update>
+<select id="comm_list" resultType="board.dto.BoardCommentDTO">
+select * from comm where p_id=#{p_id}
+</select>
+<delete id="comm_delete">
+delete from comm where comm_id=#{comm_id}
+</delete>
+<select id="pop_list" resultType="board.dto.BoardDTO">
+select rownum ,b.*,(select count(*) from comm where b.bo_id=p_id) comm_count from board b <![CDATA[ where rownum<6 ]]> order by cnt desc,likes desc
+</select>
+
+
+<!-- Web -->
+
+
+<select id="all_list" resultType="board.dto.BoardDTO"> select * from board; </select>
+
+<insert id="webinsert"> insert into board(title,bo_id,nickname,content,classfy,imagepath,imagename) values(#{title},#{bo_id},#{nickname},#{content},#{classfy},#{imagepath},#{imagename}) </insert>
+
+<delete id="webdelete"> delete from board where bo_id=#{bo_id} </delete>
+
+<update id="webupdate"> update board set title=#{title},content=#{content} where bo_id=#{bo_id} </update>
+
+<select id="detail" resultType="board.dto.BoardDTO"> select * from board where bo_id=#{bo_id} </select>
+
+<update id="webread"> update board set cnt = cnt+1 where bo_id=#{bo_id} </update>
+
+<insert id="webcomm_insert"> insert into comm(p_id,content,writer) values(#{p_id},#{content},#{writer}) </insert>
+
+<update id="webcomm_update"> update comm set content=#{content} where comm_id=#{comm_id} </update>
+
+<select id="webcomm_list" resultType="board.dto.BoardCommentDTO"> select c.*,(select nickname from member where nickname=c.writer) nickname from comm c where p_id=#{p_id} </select>
+
+<delete id="webcomm_delete"> delete from comm where comm_id=#{comm_id} </delete>
+
+<select id="weblist" resultType="board.dto.BoardDTO"> select * from board where classfy=#{classfy} </select>
+<select id="popuser" resultType="board.dto.BoardDTO">
+select * from board where nickname=#{nickname} order by writedate desc
+</select>
+
+</mapper>

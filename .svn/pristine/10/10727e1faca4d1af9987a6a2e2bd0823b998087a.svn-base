@@ -1,0 +1,44 @@
+package notice.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import notice.dto.NoticeDTO;
+
+@Repository
+public class NoticeDAOImpl implements NoticeDAO {
+	@Autowired SqlSession sql;
+
+	@Override
+	public String Notice_insert(NoticeDTO dto) {
+		// TODO Auto-generated method stub
+		return sql.insert("notice.mapper.insert",dto)>0?"succ":"fail:";
+	}
+
+	@Override
+	public String Notice_delete(int no_id) {
+		// TODO Auto-generated method stub
+		return sql.delete("notice.mapper.delete",no_id)>0?"succ":"fail";
+	}
+
+	@Override
+	public List<NoticeDTO> Notice_list() {
+		// TODO Auto-generated method stub
+		return sql.selectList("notice.mapper.allList");
+	}
+
+	@Override
+	public String Notice_update(NoticeDTO dto) {
+		// TODO Auto-generated method stub
+		return sql.update("notice.mapper.update",dto)>0?"succ":"fail";
+	}
+
+	@Override
+	public NoticeDTO Notice_modify(int no_id) {
+		// TODO Auto-generated method stub
+		return sql.selectOne("notice.mapper.selectone",no_id);
+	}
+}

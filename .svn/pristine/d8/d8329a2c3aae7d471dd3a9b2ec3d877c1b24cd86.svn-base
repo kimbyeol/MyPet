@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+body {
+	text-align: center;
+	font-size: 16px;
+	font-family: NanumSquareRoundB;
+}
+
+@font-face{
+	font-family: NanumSquareRoundB;
+	src: url(./font/NanumSquareRoundB.woff) format('woff');
+}
+
+table {
+	width: 80%;
+	margin: 0 auto;
+	border-collapse: collapse;
+	border: 1px solid #d6d5d2; 
+}
+
+
+.left { text-align: left; }
+.center { text-align: center; }
+.right { text-align: right; }
+
+.btn-fill, .btn-empty{
+	border: 1px solid #d6d5d2;
+	padding: 3px 10px;
+	text-decoration: none;
+	text-align: center;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.btn-fill{
+	border: 1px solid #5b5957;
+	background-color: #6c6a68;
+	color: #fff; 
+}
+
+.btn-fill:hover, .btn-empty:hover{
+	text-decoration: none;
+}
+
+.btn-fill:hover {
+	background-color: #5b5957;
+}
+
+a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}

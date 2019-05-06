@@ -1,0 +1,14 @@
+package notice.service;
+
+import java.util.List;
+
+import notice.dto.NoticeDTO;
+
+public interface NoticeService {
+	String Notice_insert(NoticeDTO dto);
+	String Notice_delete(int no_id);
+	List<NoticeDTO> Notice_list();
+	String Notice_update(NoticeDTO dto);
+	NoticeDTO Notice_modify(int no_id);
+	
+}

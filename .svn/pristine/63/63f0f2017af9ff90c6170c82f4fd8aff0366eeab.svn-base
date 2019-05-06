@@ -1,0 +1,19 @@
+package board.dao;
+
+import java.util.List;
+
+import board.dto.BoardCommentDTO;
+import board.dto.BoardDTO;
+
+public interface BoardDAO {
+	List<BoardDTO> board_list();
+	String board_insert(BoardDTO dto);
+	String board_update(BoardDTO dto);
+	String board_delete(int bo_id);
+	BoardDTO board_modify(int bo_id);
+	
+	String board_comment_insert(BoardCommentDTO dto);
+	String board_comment_delete(int comm_id);
+	String board_comment_update(BoardCommentDTO dto);
+	List<BoardDTO> board_comment_list(int p_id);
+}

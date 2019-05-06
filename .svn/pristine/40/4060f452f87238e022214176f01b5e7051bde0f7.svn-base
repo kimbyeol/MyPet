@@ -1,0 +1,45 @@
+package notice.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import notice.dao.NoticeDAO;
+import notice.dto.NoticeDTO;
+
+@Service
+public class NoticeServiceImpl implements NoticeService {
+	@Autowired NoticeDAO dao;
+
+	@Override
+	public String Notice_insert(NoticeDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.Notice_insert(dto);
+	}
+
+	@Override
+	public String Notice_delete(int no_id) {
+		// TODO Auto-generated method stub
+		return dao.Notice_delete(no_id);
+	}
+
+	@Override
+	public List<NoticeDTO> Notice_list() {
+		// TODO Auto-generated method stub
+		return dao.Notice_list();
+	}
+
+	@Override
+	public String Notice_update(NoticeDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.Notice_update(dto);
+	}
+
+	@Override
+	public NoticeDTO Notice_modify(int no_id) {
+		// TODO Auto-generated method stub
+		return dao.Notice_modify(no_id);
+	}
+	
+}
